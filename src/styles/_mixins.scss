@@ -1,0 +1,32 @@
+@mixin clearfix () {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+
+@mixin transition ($transition) {
+  -o-transition: $transition;
+  -moz-transition: $transition;
+  -webkit-transition: $transition;
+  transition: $transition;
+}
+
+@mixin transform ($transform) {
+  -o-transform: $transform;
+  -ms-transform: $transform;
+  -moz-transform: $transform;
+  -webkit-transform: $transform;
+  transform: $transform;
+}
+
+@mixin userSelect ($userSelect) {
+  -ms-user-select: $userSelect;
+  -moz-user-select: $userSelect;
+  -webkit-user-select: $userSelect;
+  user-select: $userSelect;
+}

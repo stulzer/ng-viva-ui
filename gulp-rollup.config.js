@@ -9,16 +9,26 @@ const uglify = require('rollup-plugin-uglify')
 
 const packageJson = require('./package.json')
 const uglifyJS = require('uglify-js')
+const utils = require('./src/utils/utils')
 
 module.exports = {
-  entry: './src/main.js',
   globals: {
     'angular': 'angular'
   },
   sourceMap: true,
   useStrict: true,
-  moduleName: packageJson.name,
+  moduleName: utils.camelize(packageJson.name),
   external: ['angular'],
+  _entries: [
+    {
+      pattern: 'src/modules/main/main.export.js'
+    },
+    {
+      name: 'pagination',
+      pattern: 'src/modules/pagination/pagination.export.js'
+    }
+  ],
+  _testEntry: 'src/modules/main/main.export.js',
   _testFormat: 'iife',
   _rollupPlugins: {
     default: [
