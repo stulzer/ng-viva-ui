@@ -1,6 +1,6 @@
 {
   "name": "ng-viva-ui",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Viva Ui Kit's implementation for AngularJS",
   "main": "dist/cjs/ng-viva-ui.js",
   "scripts": {
@@ -33,7 +33,9 @@
   "dependencies": {
     "angular": "^1.5.8"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "babel-eslint": "^6.1.2",
     "babel-plugin-external-helpers": "^6.8.0",
