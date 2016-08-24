@@ -1,0 +1,75 @@
+@import '../../../../styles/variables';
+$checkbox: #{$uiPrefix + '-checkbox'};
+
+$defaultBgColor: #ffffff;
+$defaultBdColor: rgba(0, 0, 0, 0.38);
+
+[#{$checkbox}] {
+  display: none;
+}
+
+.#{$checkbox + '__container'} {
+  $transition: all 250ms ease-in-out;
+
+  background-color: $defaultBgColor;
+  box-sizing: border-box;
+  display: inline-block;
+  color: #ffffff;
+  border: 1px solid #{$defaultBdColor};
+  border-radius: 2px;
+  width: 16px;
+  height: 16px;
+  -webkit-transition: $transition;
+  transition: $transition;
+  position: relative;
+}
+
+.#{$checkbox + '__check'} {
+  $rotate: translate(10%, -10%);
+
+  opacity: 0;
+  -webkit-transform: $rotate;
+  transform: $rotate;
+}
+
+.#{$checkbox + '__minus'} {
+  $width: 10px;
+  $height: 2px;
+
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.38);
+  display: inline-block;
+  position: absolute;
+  width: $width;
+  height: $height;
+  top: calc(50% - #{$height / 2});
+  left: calc(50% - #{$width / 2});
+}
+
+[#{$checkbox}]:checked {
+  + .#{$checkbox + '__container'} {
+    $azure: #00acff;
+
+    background-color: $azure;
+    border-color: $azure;
+
+    &.#{$checkbox + '__container--has-minus'} {
+      background-color: $defaultBgColor;
+      border-color: $defaultBdColor;
+    }
+
+    .#{$checkbox + '__check'}, .#{$checkbox + '__minus'}  {
+      opacity: 1;
+    }
+  }
+}
+
+[#{$checkbox}]:disabled,
+[#{$checkbox}]:disabled:checked {
+  + .#{$checkbox + '__container'} {
+    color: rgba(0, 0, 0, 0.38);
+    background-color: #eeeeee;
+    border-color: rgba(0, 0, 0, 0.12);
+  }
+}
+

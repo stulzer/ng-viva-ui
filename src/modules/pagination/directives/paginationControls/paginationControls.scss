@@ -1,0 +1,66 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/palette';
+@import '../../../../styles/mixins';
+
+$pagination: #{$uiPrefix + '-pagination-controls'};
+$arrowMargin: 8px;
+
+.#{$pagination + '__container'} {
+  @include clearfix();
+  display: inline-block;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 600;
+
+  button {
+    $border: 1px solid #dddddd;
+    $radius: 2px;
+
+    background-color: white;
+    border: $border;
+    border-right: none;
+    border-radius: 0;
+    float: left;
+    outline: none;
+    margin: 0;
+
+    > * {
+      display: inline-block;
+      vertical-align: middle;
+    }
+
+    &.active {
+      background-color: $azure;
+      border-color: $azure;
+      color: white;
+
+      + button {
+        border-left-color: $azure;
+      }
+    }
+
+    &:disabled {
+      background-color: rgba(0, 0, 0, 0.12);
+    }
+
+    &:first-child {
+      border-top-left-radius: $radius;
+      border-bottom-left-radius: $radius;
+    }
+
+    &:last-child {
+      border-right: $border;
+      border-top-right-radius: $radius;
+      border-bottom-right-radius: $radius;
+    }
+  }
+}
+
+.#{$pagination + '__arrow--prev'} {
+  @include transform(translate(-6px, 1px));
+  margin-right: $arrowMargin;
+}
+
+.#{$pagination + '__arrow--next'} {
+  @include transform(translate(6px, -2px) rotate(180deg));
+  margin-left: $arrowMargin;
+}

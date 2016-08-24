@@ -8,10 +8,13 @@
     "prepare": "npm test && npm run build",
     "build": "gulp",
     "dev": "gulp dev",
+    "dev:unsafe": "gulp dev --unsafe",
     "dev:unbreakable": "gulp dev --unbreakable",
+    "linter": "gulp standard",
     "test": "gulp test",
-    "test:continous": "gulp test:continuous",
-    "docs": "gulp docs"
+    "test:continuous": "gulp test:continuous",
+    "docs": "gulp docs",
+    "docs:generate": "gulp generate-docs"
   },
   "repository": {
     "type": "git",
@@ -31,7 +34,8 @@
   },
   "homepage": "https://github.com/VivaReal/ng-viva-ui#readme",
   "dependencies": {
-    "angular": "^1.5.8"
+    "angular": "^1.5.8",
+    "angular-utils-pagination": "^0.11.1"
   },
   "files": [
     "dist"

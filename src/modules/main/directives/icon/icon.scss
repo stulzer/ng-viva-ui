@@ -1,0 +1,6 @@
+@import '../../../../styles/variables';
+$icon: #{$uiPrefix + '-icon'};
+
+#{$icon} {
+  display: inline-block;
+}

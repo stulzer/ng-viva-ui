@@ -1,0 +1,11 @@
+<div ng-if="1 < pages.length || !autoHide">
+  <button viva-ui-flat-button="small" ng-if="directionLinks" ng-disabled="pagination.current == 1" ng-click="setCurrent(pagination.current - 1)">
+    <viva-ui-icon class="viva-ui-pagination-controls__arrow--prev" icon="arrow"></viva-ui-icon>
+    <span>Anterior</span>
+  </button>
+  <button viva-ui-flat-button="small" ng-repeat="pageNumber in pages track by tracker(pageNumber, $index)" ng-disabled="pageNumber === '...'" ng-class="{active : pagination.current == pageNumber}" ng-click="setCurrent(pageNumber)">{{pageNumber}}</button>
+  <button viva-ui-flat-button="small" ng-if="directionLinks" ng-disabled="pagination.current == pagination.last" ng-click="setCurrent(pagination.current + 1)">
+    <span>Próximo</span>
+    <viva-ui-icon class="viva-ui-pagination-controls__arrow--next" icon="arrow"></viva-ui-icon>
+  </button>
+</div>

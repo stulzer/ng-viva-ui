@@ -1,0 +1,43 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/palette';
+@import '../../../../styles/mixins';
+
+$flatButton: #{$uiPrefix + '-flat-button'};
+
+[#{$flatButton}] {
+  @include transition(all 150ms ease-in-out);
+
+  border: none;
+  background-color: transparent;
+  border-radius: 2px;
+  color: $azure;
+  font-size: 16px;
+  font-family: 'Open Sans', sans-serif;
+  padding: 0 16px;
+  text-align: center;
+  min-height: 48px;
+  min-width: 16px;
+  outline: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:active {
+    background-color: rgba(0, 172, 255, 0.10);
+  }
+
+  &:disabled {
+    color: rgba(0, 0, 0, 0.38);
+  }
+}
+
+[#{$flatButton}="small"] {
+  font-size: 13px;
+  min-height: 36px;
+  text-transform: uppercase;
+}
+
+[#{$flatButton}="large"] {
+  min-height: 56px;
+}
