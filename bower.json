@@ -2,6 +2,7 @@
   "name": "ng-viva-ui",
   "description": "Viva Ui Kit's implementation for AngularJS",
   "main": "dist/iife/ngVivaUi.js",
+  "moduleType": "globals",
   "authors": [
     "VivaPro Team"
   ],
@@ -14,13 +15,12 @@
     "ng"
   ],
   "homepage": "https://github.com/VivaReal/ng-viva-ui",
-  "private": true,
   "ignore": [
-    "**/.*",
     "node_modules",
     "bower_components",
-    "test",
-    "tests"
+    ".test",
+    "docs",
+    "circle.yml"
   ],
   "dependencies": {
     "angular": "^1.5.8"
