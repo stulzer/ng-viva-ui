@@ -1,0 +1,11 @@
+<svg width="8px" height="12px" viewBox="0 0 8 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g stroke="none" stroke-width="1" fill="currentcolor" fill-rule="evenodd">
+    <g transform="translate(-75.000000, -228.000000)">
+      <g transform="translate(64.000000, 216.000000)">
+        <g transform="translate(4.000000, 6.000000)">
+          <polyline transform="translate(11.333333, 12.000000) scale(1, -1) rotate(-90.000000) translate(-11.333333, -12.000000) " points="6.73333333 15.6666667 11.3333333 11.108 15.9333333 15.6666667 17.3333333 14.2793333 11.3333333 8.33333333 5.33333333 14.2793333 6.73333333 15.6666667"></polyline>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

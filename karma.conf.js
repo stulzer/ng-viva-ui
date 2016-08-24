@@ -1,11 +1,12 @@
 'use strict'
 
 const rollupConfig = Object.assign({}, require('./gulp-rollup.config'))
-const utils = require('./src/utils/utils')
+const shared = require('./shared')
 
+rollupConfig.entry = rollupConfig._testEntry
 rollupConfig.format = rollupConfig._testFormat
 rollupConfig.plugins = rollupConfig._rollupPlugins.default
-utils.cleanRollupObj(rollupConfig)
+shared.cleanRollupObj(rollupConfig)
 
 module.exports = (config) => {
   config.set({
@@ -15,7 +16,7 @@ module.exports = (config) => {
     browsers: ['PhantomJS'],
     reporters: ['progress'],
     preprocessors: {
-      'src/spec.main.js': 'rollup'
+      'src/spec.js': 'rollup'
     },
     rollupPreprocessor: rollupConfig,
     plugins: [
@@ -27,7 +28,7 @@ module.exports = (config) => {
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
       { pattern: 'src/**/*.js', included: false, watched: true },
-      'src/spec.main.js'
+      'src/spec.js'
     ]
   })
 }

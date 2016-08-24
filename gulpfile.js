@@ -16,33 +16,45 @@ const vinylPaths = require('vinyl-paths')
 
 const rollupConfig = require('./gulp-rollup.config')
 const utils = require('./src/utils/utils')
+const shared = require('./shared')
 
 function rollupRun (config, isProduction, dest) {
   config = Object.assign({}, config)
+
   const moduleName = config.moduleName
   const _rollupPlugins = config._rollupPlugins
+  const _entry = config._entry
 
-  config.moduleName = config.format === 'iife' ? utils.hifen2LowerCase(moduleName) : moduleName
+  const fileName = moduleName + (_entry.name ? `.${_entry.name}` : '')
+  config.moduleName = moduleName + (() => {
+    const name = _entry.name
+    return name ? utils.hifen2CamelCase(name.replace(/\./g, '-'), true) : ''
+  })()
+
+  config.entry = _entry.pattern
   config.plugins = _rollupPlugins.default
 
   if (isProduction) {
     config.plugins = config.plugins.concat(_rollupPlugins.production)
   }
 
-  utils.cleanRollupObj(config)
+  shared.cleanRollupObj(config)
   return rollup(config)
-    .pipe(source(`${moduleName}.${isProduction ? 'min.js' : 'js'}`))
+    .pipe(source(`${fileName}.${isProduction ? 'min.js' : 'js'}`))
     .pipe(gulp.dest(dest || 'dist' + `/${config.format}`))
 }
 
 function rollupGenerate () {
   const streams = []
 
-  for (let format of rollupConfig._formats) {
-    const configObj = Object.assign({}, rollupConfig, {format})
+  for (let entry of rollupConfig._entries) {
+    const configObj = Object.assign({}, rollupConfig, { _entry: entry })
 
-    streams.push(rollupRun(configObj))
-    streams.push(rollupRun(configObj, true))
+    for (let format of rollupConfig._formats) {
+      configObj.format = format
+      streams.push(rollupRun(configObj))
+      streams.push(rollupRun(configObj, true))
+    }
   }
 
   return mergeStream(streams)
@@ -79,7 +91,9 @@ gulp.task('standard:clean', ['standard'], () => {
 })
 
 gulp.task('standard', () => {
-  return checkStandard()
+  if (!argv.unsafe) {
+    return checkStandard()
+  }
 })
 
 gulp.task('watch', () => {
