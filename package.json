@@ -1,12 +1,12 @@
 {
   "name": "ng-viva-ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Viva Ui Kit's implementation for AngularJS",
   "main": "dist/cjs/ng-viva-ui.js",
   "scripts": {
-    "postinstall": "bower install",
-    "prepublish": "npm start && npm test",
-    "start": "gulp",
+    "installdep": "bower install",
+    "prepare": "npm test && npm run build",
+    "build": "gulp",
     "dev": "gulp dev",
     "dev:unbreakable": "gulp dev --unbreakable",
     "test": "gulp test",

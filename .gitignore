@@ -40,9 +40,6 @@ bower_components
 # Docs directories
 docs
 
-# Build directories
-dist
-
 # Test directories
 .test
 
