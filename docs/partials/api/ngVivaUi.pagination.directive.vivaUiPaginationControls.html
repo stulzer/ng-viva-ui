@@ -1,0 +1,23 @@
+<h1><code ng:non-bindable="">vivaUiPaginationControls</code>
+<div><span class="hint">directive in module <code ng:non-bindable="">ngVivaUi.pagination</code>
+</span>
+</div>
+</h1>
+<div><h2 id="description">Description</h2>
+<div class="description"><div class="ngvivaui-pagination-directive-page ngvivaui-pagination-directive-vivauipaginationcontrols-page"><p>UI Kit&#39;s pagination controls implementation.</p>
+</div></div>
+<h2 id="usage">Usage</h2>
+<div class="usage">as element:<pre class="prettyprint linenums">&lt;viva-ui-pagination-controls
+       [max-size]="{number}"
+       [on-page-change]="{function}"
+       [pagination-id]="{string}"&gt;
+&lt;/viva-ui-pagination-controls&gt;</pre>
+<h3 id="usage_directive-info">Directive info</h3>
+<div class="directive-info"><ul><li>This directive creates new scope.</li>
+</ul>
+</div>
+<h4 id="usage_directive-info_parameters">Parameters</h4><table class="variables-matrix table table-bordered table-striped"><thead><tr><th>Param</th><th>Type</th><th>Details</th></tr></thead><tbody><tr><td>[maxSize]</td><td><a href="" class="label type-hint type-hint-number">number</a></td><td><div class="ngvivaui-pagination-directive-page ngvivaui-pagination-directive-vivauipaginationcontrols-page"><p>(default = 9) Specify a maximum number of pagination links to display. The default is 9, and the minimum is 5 (setting a lower value than 5 will not have an effect).</p>
+</div></td></tr><tr><td>[onPageChange]</td><td><a href="" class="label type-hint type-hint-function">function</a></td><td><div class="ngvivaui-pagination-directive-page ngvivaui-pagination-directive-vivauipaginationcontrols-page"><p>Specify a callback method to run each time one of the pagination links is clicked. The method will be passed the optional arguments newPageNumber and oldPageNumber, which are integers equal to the page number that has just been navigated to, and the one just left, respectively. Note you must use that exact argument name in your view, i.e. <code>&lt;viva-ui-pagination-controls on-page-change=&quot;myMethod(newPageNumber, oldPageNumber)&quot;&gt;</code>, and the method you specify must be defined on your controller $scope.</p>
+</div></td></tr><tr><td>[paginationId]</td><td><a href="" class="label type-hint type-hint-string">string</a></td><td><div class="ngvivaui-pagination-directive-page ngvivaui-pagination-directive-vivauipaginationcontrols-page"><p>Used to group together the dir-pagination-controls with a corresponding dir-paginate when you need more than one pagination instance per page. See the section below on setting up multiple instances.</p>
+</div></td></tr></tbody></table></div>
+</div>

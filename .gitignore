@@ -38,7 +38,7 @@ bower_components
 .node_repl_history
 
 # Docs directories
-docs
+# docs
 
 # Test directories
 .test
