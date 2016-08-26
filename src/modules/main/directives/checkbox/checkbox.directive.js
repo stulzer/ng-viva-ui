@@ -75,7 +75,7 @@ mainModule.directive('vivaUiCheckbox', ['$compile', ($compile) => {
 
       $element.after($template)
 
-      $attrs.$observe('vivaUICheckbox', (val) => {
+      $attrs.$observe('vivaUiCheckbox', (val) => {
         $uiCheckbox.hasMinusIcon = val === 'minus'
       })
 

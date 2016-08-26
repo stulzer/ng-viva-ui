@@ -14,6 +14,9 @@ $arrowMargin: 8px;
   button {
     $border: 1px solid #dddddd;
     $radius: 2px;
+    $transition: 100ms ease-in;
+
+    @include transition(#{background-color $transition, color $transition});
 
     background-color: white;
     border: $border;
@@ -26,6 +29,10 @@ $arrowMargin: 8px;
     > * {
       display: inline-block;
       vertical-align: middle;
+    }
+
+    &.viva-ui-pagination-controls__track-button {
+      padding: 0 13px;
     }
 
     &.active {
