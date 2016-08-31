@@ -101,11 +101,23 @@ gulp.task('watch', () => {
   gulp.watch(['./src/**/*.js', './src/**/*.scss', './src/**/*.html', './src/**/*.svg'], ['standard:clean:rollup'])
 })
 
-gulp.task('generate-docs', () => {
+gulp.task('generate-docs', ['default'], () => {
   return gulp.src('src/**/*.js')
     .pipe(ngdocs.process({
       html5Mode: false,
-      title: 'UI Kit'
+      title: 'UI Kit',
+      styles: [
+        'bower_components/floatl/lib/css/floatl.css'
+      ],
+      scripts: [
+        'bower_components/floatl/lib/js/floatl.global.js',
+        'dist/iife/ngVivaUi.min.js',
+        'dist/iife/ngVivaUi.label.min.js',
+        'dist/iife/ngVivaUi.pagination.min.js'
+      ],
+      loadDefaults: {
+        prettify: true
+      }
     }))
     .pipe(gulp.dest('docs'))
     .pipe(connect.reload())

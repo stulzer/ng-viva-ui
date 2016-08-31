@@ -14,6 +14,7 @@
     "test": "gulp test",
     "test:continuous": "gulp test:continuous",
     "docs": "gulp docs",
+    "docs:unsafe": "gulp docs --unsafe",
     "docs:generate": "gulp generate-docs"
   },
   "repository": {
@@ -35,7 +36,8 @@
   "homepage": "https://github.com/VivaReal/ng-viva-ui#readme",
   "dependencies": {
     "angular": "^1.5.8",
-    "angular-utils-pagination": "^0.11.1"
+    "angular-utils-pagination": "^0.11.1",
+    "floatl": "^1.0.0"
   },
   "files": [
     "dist"

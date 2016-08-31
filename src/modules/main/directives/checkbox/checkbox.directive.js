@@ -35,9 +35,37 @@ class CheckboxHandler {
  * @ngdoc directive
  * @name ngVivaUi.directive:vivaUiCheckbox
  * @restrict A
- * @element input type="checkbox"
+ * @element input
  * @description UI Kit's checkbox implementation.
  * @param {empty | enum:[minus]} vivaUiCheckbox Change checkbox's tick.
+ * @param {enum:[checkbox]} [type=checkbox] HTML's input type.
+ * @example
+    <example module="ngVivaUi">
+      <file name="app.html">
+        <div class="live-example">
+          <input type="checkbox" viva-ui-checkbox ng-model="defaultCheckbox" id="default-checkbox">
+          <label for="default-checkbox">Default</label>
+        </div>
+
+        <div class="live-example">
+          <input type="checkbox" viva-ui-checkbox="minus" ng-model="minusCheckbox" id="minus-checkbox">
+          <label for="minus-checkbox">Minus</label>
+        </div>
+      </file>
+
+      <file name="style.css">
+        .live-example {
+          margin-bottom: 5px;
+        }
+
+        .live-example label, .live-example input + * {
+          display: inline-block;
+          vertical-align: middle;
+          line-height: normal;
+          margin: 0;
+        }
+      </file>
+    </example>
  */
 mainModule.directive('vivaUiCheckbox', ['$compile', ($compile) => {
   applyStyle(style)

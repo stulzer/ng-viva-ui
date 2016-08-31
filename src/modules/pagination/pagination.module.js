@@ -16,7 +16,7 @@ const paginationModule = (() => {
   try {
     return angular.module(moduleName)
   } catch (e) {
-    return angular.module(moduleName, [mainModuleName, 'angularUtils.directives.dirPagination'])
+    return angular.module(moduleName, [moduleName, 'angularUtils.directives.dirPagination'])
   }
 })()
 

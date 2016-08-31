@@ -8,7 +8,13 @@ import style from './flatButton.scss'
  * @restrict A
  * @element button
  * @description UI Kit's flat button implementation.
- * @param {empty | enum:[small, medium, large]} vivaUiFlatButton Button's size, by default will be medium.
+ * @param {enum:[small, medium, large]} [vivaUiFlatButton=medium] Button's size.
+ * @example
+    <example module="ngVivaUi">
+      <file name="app.html">
+        <button viva-ui-flat-button>Flat button</button>
+      </file>
+    </example>
  */
 mainModule.directive('vivaUiFlatButton', () => {
   applyStyle(style)

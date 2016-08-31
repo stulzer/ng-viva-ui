@@ -13,12 +13,13 @@ const utils = require('./src/utils/utils')
 
 module.exports = {
   globals: {
-    'angular': 'angular'
+    'angular': 'angular',
+    'floatl': 'Floatl'
   },
   sourceMap: true,
   useStrict: true,
   moduleName: utils.camelize(packageJson.name),
-  external: ['angular'],
+  external: ['angular', 'floatl'],
   _entries: [
     {
       pattern: 'src/modules/main/main.export.js'
@@ -26,6 +27,10 @@ module.exports = {
     {
       name: 'pagination',
       pattern: 'src/modules/pagination/pagination.export.js'
+    },
+    {
+      name: 'label',
+      pattern: 'src/modules/label/label.export.js'
     }
   ],
   _testEntry: 'src/modules/main/main.export.js',

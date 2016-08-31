@@ -9,6 +9,12 @@ import style from './icon.scss'
  * @restrict E
  * @description An iconset consumer.
  * @param {string} icon Icon's name.
+ * @example
+    <example module="ngVivaUi">
+      <file name="index.html">
+        <viva-ui-icon icon="check"></viva-ui-icon>
+      </file>
+    </example>
  */
 mainModule.directive('vivaUiIcon', () => {
   applyStyle(style)
