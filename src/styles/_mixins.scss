@@ -9,6 +9,34 @@
   }
 }
 
+@mixin openSans () {
+  font-family: 'Open Sans', sans-serif;
+}
+
+@mixin paddingX ($padding) {
+  padding-left: $padding;
+  padding-right: $padding;
+}
+
+@mixin paddingY ($padding) {
+  padding-top: $padding;
+  padding-bottom: $padding;
+}
+
+@mixin placeholderColor ($color) {
+  &:-ms-input-placeholder {
+    color: $color;
+  }
+
+  &::-moz-placeholder {
+    color: $color;
+  }
+
+  &::-webkit-input-placeholder {
+    color: $color;
+  }
+}
+
 @mixin transition ($transition) {
   -o-transition: $transition;
   -moz-transition: $transition;

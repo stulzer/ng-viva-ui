@@ -5,8 +5,6 @@
 $flatButton: #{$uiPrefix + '-flat-button'};
 
 [#{$flatButton}] {
-  @include transition(all 250ms ease-in-out);
-
   border: none;
   background-color: transparent;
   border-radius: 2px;
@@ -19,6 +17,9 @@ $flatButton: #{$uiPrefix + '-flat-button'};
   min-height: 48px;
   min-width: 16px;
   outline: none;
+
+  @include openSans();
+  @include transition(all 150ms ease-in-out);
 
   &:hover {
     cursor: pointer;

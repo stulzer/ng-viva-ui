@@ -1,0 +1,48 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/palette';
+@import '../../../../styles/mixins';
+
+$input: #{$uiPrefix + '-input'};
+$borderWidth: 1px;
+$padding: 16px;
+
+input[type="text"][#{$input}] {
+  border: #{$borderWidth} solid $black12;
+  border-radius: 2px;
+  box-sizing: border-box;
+  color: $black87;
+  font-size: 16px;
+  line-height: 44px;
+  margin: 0;
+  outline: none;
+  min-height: 44px;
+
+  @include openSans();
+  @include paddingX($padding);
+  @include placeholderColor($black38);
+  @include transition(border-color 250ms ease-in);
+
+  &:focus {
+    border-width: $borderWidth + 1;
+    border-color: $azure;
+
+    @include paddingX($padding - 1);
+  }
+}
+
+input[type="text"][#{$input}="error"] {
+  &, &:focus {
+    border-width: $borderWidth;
+    border-color: $paleRed;
+
+    @include paddingX($padding);
+  }
+
+  + [#{$input + '-status'}] {
+    color: $paleRed;
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+
