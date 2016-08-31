@@ -60,13 +60,14 @@ mainModule.directive('vivaUiCheckbox', ['$compile', ($compile) => {
         $uiCheckbox.hasMinusIcon = val === 'minus'
       })
 
-      $template.bind('click', () => {
+      $template.bind('click', (e) => {
         handler.onClick()
         const ngClick = $attrs.ngClick
 
         if (ngClick) {
-          const e = new window.MouseEvent('click', { bubbles: true, cancelable: true })
-          $element[0].dispatchEvent(e)
+          $scope.$event = e
+          $scope.$eval(ngClick)
+          delete $scope.$event
         }
       })
     }
