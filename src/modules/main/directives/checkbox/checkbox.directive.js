@@ -38,7 +38,7 @@ class CheckboxHandler {
  * @element input
  * @description UI Kit's checkbox implementation.
  * @param {empty | enum:[minus]} vivaUiCheckbox Change checkbox's tick.
- * @param {enum:[checkbox]} [type=checkbox] HTML's input type.
+ * @param {enum:[checkbox]} type HTML's input type.
  * @example
     <example module="ngVivaUi">
       <file name="app.html">

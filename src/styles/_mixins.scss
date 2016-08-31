@@ -23,6 +23,11 @@
   padding-bottom: $padding;
 }
 
+@mixin square ($measure) {
+  width: $measure;
+  height: $measure;
+}
+
 @mixin placeholderColor ($color) {
   &:-ms-input-placeholder {
     color: $color;

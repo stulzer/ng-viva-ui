@@ -11,7 +11,7 @@ import style from './icon.scss'
  * @param {string} icon Icon's name.
  * @example
     <example module="ngVivaUi">
-      <file name="index.html">
+      <file name="app.html">
         <viva-ui-icon icon="check"></viva-ui-icon>
       </file>
     </example>

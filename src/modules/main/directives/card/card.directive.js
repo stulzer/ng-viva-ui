@@ -9,7 +9,7 @@ import style from './card.scss'
  * @description UI Kit's card implementation.
  * @example
     <example module="ngVivaUi">
-      <file name="index.html">
+      <file name="app.html">
         <viva-ui-card>
           <viva-ui-card-content>
             <span>Here it goes some content.</span>

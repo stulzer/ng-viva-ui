@@ -30,19 +30,7 @@ class FloatLabelHandler {
  * @description UI Kit's float label implementation.
  * @example
     <example module="ngVivaUi.label">
-      <file name="index.html">
-        <style>
-          .live-example {
-            display: inline-block;
-            width: 33%;
-            vertical-align: top;
-          }
-
-          .live-example input[type="text"]:focus {
-            box-shadow: none;
-          }
-        </style>
-
+      <file name="app.html">
         <div class="live-example">
           <viva-ui-float-label>
             <input type="text" viva-ui-input placeholder="Float label">
@@ -55,6 +43,18 @@ class FloatLabelHandler {
           </viva-ui-float-label>
         </div>
       </file>
+
+      <file name="style.css">
+        .live-example {
+          display: inline-block;
+          width: 33%;
+          vertical-align: top;
+        }
+
+        .live-example input[type="text"]:focus {
+          box-shadow: none;
+        }
+      </file>
     </example>
  */
 labelModule.directive('vivaUiFloatLabel', ['$compile', ($compile) => {
@@ -63,15 +63,15 @@ labelModule.directive('vivaUiFloatLabel', ['$compile', ($compile) => {
     restrict: 'E',
     scope: {},
     transclude: true,
-    controller: () => {},
-    controllerAs: '$floatLabel',
+    controllerAs: '$uiFloatLabel',
+    controller: function () {},
     link: {
       post: ($scope, $element, $attrs, $ctrl) => {
         const $floatLabelContainer = $element.children()
         const $ngTrascludeTag = $element.find('ng-transclude')
 
         const $input = $element.find('input')
-        const $label = $compile('<label class="floatl__label" ng-class="[$floatLabel.labelClass]">')($scope)
+        const $label = $compile('<label class="floatl__label" ng-class="[$uiFloatLabel.labelClass]">')($scope)
 
         const handler = new FloatLabelHandler($attrs, $input, $label, $ctrl)
 

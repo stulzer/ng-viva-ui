@@ -1,0 +1,60 @@
+@import '../../../../styles/variables';
+@import '../../../../styles/palette';
+@import '../../../../styles/mixins';
+
+$completometro: #{$uiPrefix + '-completometro'};
+$archMeasure: 64px;
+
+#{$completometro} {
+  display: inline-block;
+  min-width: $archMeasure;
+
+  .#{$completometro + '__arch'} {
+    height: $archMeasure / 2;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .#{$completometro + '__arch-border'},
+  .#{$completometro + '__arch-body'} {
+    border-radius: 50%;
+  }
+
+  .#{$completometro + '__arch-border'},
+  .#{$completometro + '__arch-border-bg'},
+  .#{$completometro + '__arch-progress'} {
+    position: absolute;
+  }
+
+  .#{$completometro + '__arch-border'} {
+    overflow: hidden;
+
+    @include square($archMeasure);
+  }
+
+  .#{$completometro + '__arch-border-bg'} {
+    background-color: red;
+
+    @include square(100%);
+  }
+
+  .#{$completometro + '__arch-progress'} {
+    background-color: green;
+    width: 0;
+    height: 100%;
+
+    @include transition(all 250ms ease-in-out);
+    @include transform(rotate(-90deg));
+  }
+
+  .#{$completometro + '__arch-body'} {
+    $resizeMeasure: 3px;
+
+    background-color: blue;
+    position: relative;
+    top: $resizeMeasure;
+    left: $resizeMeasure;
+
+    @include square($archMeasure - $resizeMeasure * 2);
+  }
+}
