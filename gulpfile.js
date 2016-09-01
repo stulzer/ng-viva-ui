@@ -110,12 +110,16 @@ gulp.task('generate-docs', ['default'], () => {
         'bower_components/floatl/lib/css/floatl.css'
       ],
       scripts: [
+        'bower_components/angular/angular.min.js',
+        'bower_components/angular-animate/angular-animate.min.js',
         'bower_components/floatl/lib/js/floatl.global.js',
-        'dist/iife/ngVivaUi.min.js',
-        'dist/iife/ngVivaUi.label.min.js',
-        'dist/iife/ngVivaUi.pagination.min.js'
+        'dist/iife/ngVivaUi.js',
+        'dist/iife/ngVivaUi.label.js',
+        'dist/iife/ngVivaUi.pagination.js'
       ],
       loadDefaults: {
+        angular: false,
+        angularAnimate: false,
         prettify: true
       }
     }))

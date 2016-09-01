@@ -2,7 +2,7 @@
 @import '../../../../styles/palette';
 @import '../../../../styles/mixins';
 
-$completometro: #{$uiPrefix + '-completometro'};
+$completometro: 'viva-ui-completometro';
 $archMeasure: 64px;
 
 #{$completometro} {
@@ -40,11 +40,11 @@ $archMeasure: 64px;
 
   .#{$completometro + '__arch-progress'} {
     background-color: green;
-    width: 0;
     height: 100%;
+    z-index: 10;
 
     @include transition(all 250ms ease-in-out);
-    @include transform(rotate(-90deg));
+    @include transform(rotate(-90deg) translateX(0));
   }
 
   .#{$completometro + '__arch-body'} {

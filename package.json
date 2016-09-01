@@ -1,6 +1,6 @@
 {
   "name": "ng-viva-ui",
-  "version": "1.0.1",
+  "version": "2.1.0",
   "description": "Viva Ui Kit's implementation for AngularJS",
   "main": "dist/cjs/ng-viva-ui.js",
   "scripts": {

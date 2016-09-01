@@ -3,14 +3,23 @@ import mainModule from '../../main.module'
 import style from './completometro.scss'
 import template from './completometro.html'
 
+let styleApplied
+
 class CompletometroHandler {
-  constructor ($element, $ctrl) {
-    this.$element = $element
+  constructor ($ctrl, $scope, $element, $progressCircle) {
     this.$ctrl = $ctrl
+    this.$scope = $scope
+    this.$element = $element
+    this.$progressCircle = $progressCircle
   }
 
   setProgress (progress) {
-    this.$element.css('width', `${progress}px`)
+    const deg = progress * 1.8 - 90
+    // const translate = progress > 50 ? 25 : 0
+
+    this.$progressCircle.css('width', `${progress}%`)
+    this.$progressCircle.css('transform', `rotate(${deg}deg)`)
+    // this.$progressCircle.css('top', top)
   }
 }
 
@@ -22,34 +31,43 @@ class CompletometroHandler {
  * @example
     <example module="ngVivaUi">
       <file name="app.html">
+        <viva-ui-completometro progress="0"></viva-ui-completometro>
+        <viva-ui-completometro progress="15"></viva-ui-completometro>
+        <viva-ui-completometro progress="25"></viva-ui-completometro>
         <viva-ui-completometro progress="50"></viva-ui-completometro>
+        <viva-ui-completometro progress="75"></viva-ui-completometro>
+        <viva-ui-completometro progress="95"></viva-ui-completometro>
+        <viva-ui-completometro progress="100"></viva-ui-completometro>
       </file>
     </example>
  */
-mainModule.directive('vivaUiCompletometro', () => {
-  applyStyle(style)
+mainModule.component('vivaUiCompletometro', {
+  template,
+  bindings: {
+    progress: '='
+  },
+  controllerAs: '$uiCompletometro',
+  controller: ['$scope', '$element', function ($scope, $element) {
+    const handler = new CompletometroHandler(this, $scope, $element)
 
-  return {
-    template,
-    restrict: 'E',
-    scope: {
-      progress: '='
-    },
-    bindToController: true,
-    controllerAs: '$uiCompletometro',
-    controller: function () {
-      this.classPrefix = 'viva-ui-completometro'
-    },
-    link: ($scope, $element, $attrs, $ctrl) => {
-      const handler = new CompletometroHandler($element, $ctrl)
-
-      $scope.$watch(
-        () => $ctrl.progress,
-        (progress) => {
-          progress = typeof progress === 'number' && !Number.isNaN(progress) ? progress : 0
-          handler.setProgress(progress)
-        }
-      )
+    if (!styleApplied) {
+      styleApplied = !!applyStyle(style)
     }
-  }
+
+    this.$onChanges = (changesObj) => {
+      const progress = changesObj.progress
+
+      if (progress) {
+        handler.setProgress(progress)
+      }
+    }
+
+    this.$postLink = () => {
+      handler.$progressCircle = angular.element(
+        $element[0].querySelector('.viva-ui-completometro__arch-progress')
+      )
+
+      handler.setProgress(this.progress)
+    }
+  }]
 })
