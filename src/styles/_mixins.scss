@@ -28,6 +28,12 @@
   height: $measure;
 }
 
+@mixin backfaceVisibility ($backfaceVisibility) {
+  -moz-backface-visibility: $backfaceVisibility;
+  -webkit-backface-visibility: $backfaceVisibility;
+  backface-visibility: $backfaceVisibility;
+}
+
 @mixin placeholderColor ($color) {
   &:-ms-input-placeholder {
     color: $color;
@@ -55,6 +61,14 @@
   -moz-transform: $transform;
   -webkit-transform: $transform;
   transform: $transform;
+}
+
+@mixin transformOrigin ($transformOrigin) {
+  -o-transform-origin: $transformOrigin;
+  -ms-transform-origin: $transformOrigin;
+  -moz-transform-origin: $transformOrigin;
+  -webkit-transform-origin: $transformOrigin;
+  transform-origin: $transformOrigin;
 }
 
 @mixin userSelect ($userSelect) {

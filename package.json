@@ -6,16 +6,15 @@
   "scripts": {
     "installdep": "bower install",
     "prepare": "npm test && npm run build",
-    "build": "gulp",
+    "build": "gulp --production",
+    "linter": "gulp standard",
     "dev": "gulp dev",
     "dev:unsafe": "gulp dev --unsafe",
     "dev:unbreakable": "gulp dev --unbreakable",
-    "linter": "gulp standard",
     "test": "gulp test",
     "test:continuous": "gulp test:continuous",
     "docs": "gulp docs",
-    "docs:unsafe": "gulp docs --unsafe",
-    "docs:generate": "gulp generate-docs"
+    "docs:generate": "gulp generate-docs --production"
   },
   "repository": {
     "type": "git",
@@ -45,8 +44,10 @@
   "devDependencies": {
     "babel-eslint": "^6.1.2",
     "babel-plugin-external-helpers": "^6.8.0",
+    "babel-plugin-transform-class-properties": "^6.11.5",
     "babel-preset-es2015": "^6.13.2",
     "bower": "^1.7.9",
+    "color": "^0.11.3",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-connect": "^5.0.0",
@@ -64,6 +65,7 @@
     "rollup-plugin-babel": "^2.6.1",
     "rollup-plugin-commonjs": "^3.3.1",
     "rollup-plugin-json": "^2.0.1",
+    "rollup-plugin-node-resolve": "^2.0.0",
     "rollup-plugin-sass": "^0.1.1",
     "rollup-plugin-string": "^2.0.2",
     "rollup-plugin-uglify": "^1.0.1",

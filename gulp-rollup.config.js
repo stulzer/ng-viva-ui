@@ -3,6 +3,7 @@
 const babel = require('rollup-plugin-babel')
 const commonjs = require('rollup-plugin-commonjs')
 const json = require('rollup-plugin-json')
+const nodeResolve = require('rollup-plugin-node-resolve')
 const sass = require('rollup-plugin-sass')
 const string = require('rollup-plugin-string')
 const uglify = require('rollup-plugin-uglify')
@@ -45,8 +46,12 @@ module.exports = {
       babel({
         exclude: 'node_modules/**'
       }),
+      nodeResolve({
+        jsnext: true,
+        main: true
+      }),
       commonjs({
-        exclude: 'node_modules/**'
+        include: ['src/**', 'node_modules/**']
       })
     ],
     production: [

@@ -18,6 +18,8 @@ const rollupConfig = require('./gulp-rollup.config')
 const utils = require('./src/utils/utils')
 const shared = require('./shared')
 
+const cache = {}
+
 function rollupRun (config, isProduction, dest) {
   config = Object.assign({}, config)
 
@@ -38,22 +40,38 @@ function rollupRun (config, isProduction, dest) {
     config.plugins = config.plugins.concat(_rollupPlugins.production)
   }
 
+  cache[config.format] = cache[config.format] || {}
+  config.cache = cache[config.format][isProduction ? 'main' : 'min']
+
   shared.cleanRollupObj(config)
+
   return rollup(config)
+    .on('bundle', (bundle) => { cache[config.format][isProduction ? 'main' : 'min'] = bundle })
     .pipe(source(`${fileName}.${isProduction ? 'min.js' : 'js'}`))
     .pipe(gulp.dest(dest || 'dist' + `/${config.format}`))
 }
 
 function rollupGenerate () {
   const streams = []
+  const generate = (format, configObj) => {
+    configObj.format = format
+    streams.push(rollupRun(configObj))
+
+    if (argv.production) {
+      streams.push(rollupRun(configObj, true))
+    }
+  }
 
   for (let entry of rollupConfig._entries) {
     const configObj = Object.assign({}, rollupConfig, { _entry: entry })
 
+    if (argv.format && rollupConfig._formats.indexOf(argv.format) !== -1) {
+      generate(argv.format, configObj)
+      continue
+    }
+
     for (let format of rollupConfig._formats) {
-      configObj.format = format
-      streams.push(rollupRun(configObj))
-      streams.push(rollupRun(configObj, true))
+      generate(format, configObj)
     }
   }
 

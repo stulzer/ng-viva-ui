@@ -4,14 +4,15 @@
 
 $completometro: 'viva-ui-completometro';
 $archMeasure: 64px;
+$fillColor: white;
 
 #{$completometro} {
   display: inline-block;
   min-width: $archMeasure;
 
   .#{$completometro + '__arch'} {
-    height: $archMeasure / 2;
-    overflow: hidden;
+    height: $archMeasure / 2 + 2;
+    overflow: auto;
     position: relative;
   }
 
@@ -27,34 +28,96 @@ $archMeasure: 64px;
   }
 
   .#{$completometro + '__arch-border'} {
-    overflow: hidden;
+    overflow: auto;
 
     @include square($archMeasure);
   }
 
   .#{$completometro + '__arch-border-bg'} {
-    background-color: red;
+    background-color: #f1f1f1;
 
     @include square(100%);
   }
 
   .#{$completometro + '__arch-progress'} {
-    background-color: green;
-    height: 100%;
-    z-index: 10;
+    background-color: $success;
+    width: 100%;
+    height: 50%;
+    top: 50%;
 
-    @include transition(all 250ms ease-in-out);
-    @include transform(rotate(-90deg) translateX(0));
+    @include transformOrigin(center top);
+    @include transition(transform 1000ms ease-in-out);
+  }
+
+  .#{$completometro + '__bottom-layer'} {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: $fillColor;
   }
 
   .#{$completometro + '__arch-body'} {
     $resizeMeasure: 3px;
 
-    background-color: blue;
+    background-color: $fillColor;
     position: relative;
     top: $resizeMeasure;
     left: $resizeMeasure;
 
     @include square($archMeasure - $resizeMeasure * 2);
+  }
+
+  .#{$completometro + '__pointer'} {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+
+    @include transition(transform 1000ms ease-in-out);
+    @include transform(rotate(-90deg));
+    @include transformOrigin(bottom left);
+
+    .#{$completometro + '__pointer-top'},
+    .#{$completometro + '__pointer-bottom'} {
+      width: 4px;
+      margin-left: -50%;
+    }
+
+    .#{$completometro + '__pointer-top'} {
+      height: 22px;
+
+      &::before {
+        display: block;
+        position: relative;
+        content: " ";
+        width: 0;
+        height: 0;
+        border-bottom: 10px solid $black38;
+        border-right: 1px solid transparent;
+        border-left: 1px solid transparent;
+        top: 7px;
+        left: 1px;
+
+        @include transform(scale(2));
+      }
+    }
+
+    .#{$completometro + '__pointer-bottom'} {
+      overflow: hidden;
+      position: relative;
+      height: 2px;
+
+      &::after {
+        display: block;
+        content: " ";
+        width: 4px;
+        height: 4px;
+        background-color: $black38;
+        border-radius: 50%;
+
+        @include transform(translateY(-50%));
+      }
+    }
   }
 }
